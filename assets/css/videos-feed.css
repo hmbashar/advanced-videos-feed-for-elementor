@@ -1,0 +1,104 @@
+.advance-videos-feed {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.advance-videos-feed.avffe-grid {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.advance-videos-feed.avffe-columns-1 { grid-template-columns: repeat(1, 1fr); }
+.advance-videos-feed.avffe-columns-2 { grid-template-columns: repeat(2, 1fr); }
+.advance-videos-feed.avffe-columns-3 { grid-template-columns: repeat(3, 1fr); }
+.advance-videos-feed.avffe-columns-4 { grid-template-columns: repeat(4, 1fr); }
+
+.advance-videos-feed.avffe-list .video-item {
+    margin-bottom: 20px;
+}
+
+.video-item {
+    position: relative;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.play-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.video-thumbnail:hover .play-button {
+    opacity: 1;
+}
+
+.video-title {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.video-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .advance-videos-feed.avffe-columns-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .advance-videos-feed.avffe-columns-3,
+    .advance-videos-feed.avffe-columns-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .advance-videos-feed.avffe-columns-2,
+    .advance-videos-feed.avffe-columns-3,
+    .advance-videos-feed.avffe-columns-4 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
