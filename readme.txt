@@ -1,6 +1,6 @@
 === Advanced Videos Feed for Elementor ===
 Contributors: hmbashar
-Tags: elementor, videos, video feed, youtube, vimeo
+Tags: elementor, videos, feed, youtube, vimeo
 Requires at least: 5.0
 Tested up to: 6.8.1
 Stable tag: 1.0.0
