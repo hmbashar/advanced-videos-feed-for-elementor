@@ -27,12 +27,6 @@ Advanced Videos Feed for Elementor is a powerful WordPress plugin that enhances 
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the Elementor editor to add video feed widgets to your pages
 
-## How to Use
-
-Watch our guide video to learn how to use the plugin:
-
-[Watch Tutorial](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-
 ## Available Fields and Settings
 
 ### General Settings
@@ -56,19 +50,8 @@ Watch our guide video to learn how to use the plugin:
 - **Padding & Margin**: Adjust spacing
 - **Border**: Customize border style
 
-## Requirements
 
-- WordPress 5.0 or higher
-- Elementor 3.0 or higher
-- PHP 8.0 or higher
-
-## Support
-
-For support, please create an issue in the plugin's GitHub repository or contact through WordPress.org support forums.
-
-## License
-
-This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
+# How to Use
 
 ## Video Tutorials
 
@@ -97,3 +80,17 @@ We provide detailed video tutorials to help you get started:
 - Go to your YouTube playlist
 - Copy the ID from the URL (starts with "PL")
 - Check our [tutorial](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
+
+## Requirements
+
+- WordPress 5.0 or higher
+- Elementor 3.0 or higher
+- PHP 8.0 or higher
+
+## Support
+
+For support, please create an issue in the plugin's GitHub repository or contact through WordPress.org support forums.
+
+## License
+
+This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
