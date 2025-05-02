@@ -2,9 +2,9 @@
 Contributors: hmbashar
 Tags: elementor, videos, video feed, youtube, vimeo
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.8.1
 Stable tag: 1.0.0
-Requires PHP: 7.0
+Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,56 @@ Advanced Videos Feed for Elementor allows you to showcase video content from var
 * Support for multiple video platforms (Vimeo and others)
 * Custom play button styles
 * Lazy loading support
+
+= Video Tutorials =
+* [How to Get YouTube API Key](https://www.youtube.com/watch?v=EPeDTRNKAVo)
+* [How to Find Your YouTube Channel ID](https://www.youtube.com/watch?v=3mrKjzrIiq4)
+* [How to Find YouTube Playlist ID](https://www.youtube.com/watch?v=Irz1mN_duAU)
+
+= How to Use =
+
+**Getting Started:**
+1. Get your YouTube API Key:
+   * Go to Google Cloud Console
+   * Create a new project or select existing
+   * Enable YouTube Data API v3
+   * Create credentials (API Key)
+   * Watch the [tutorial video](https://www.youtube.com/watch?v=EPeDTRNKAVo) for detailed steps
+
+2. Find your Channel ID:
+   * Go to your YouTube channel page
+   * Right-click and select "View Page Source"
+   * Search for "channelId"
+   * Or watch the [tutorial video](https://www.youtube.com/watch?v=3mrKjzrIiq4) for guidance
+
+3. For Playlist Feed:
+   * Go to your YouTube playlist
+   * Copy the ID from the URL (starts with "PL")
+   * Watch the [tutorial video](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
+[youtube https://www.youtube.com/watch?v=YOUR_VIDEO_ID]
+
+= Available Fields and Settings =
+
+**General Settings:**
+* Layout Type - Choose between grid or list layout
+* Columns - Set number of columns for grid layout
+* Items Per Page - Control how many videos to display
+* Title - Show/hide video title
+* Description - Show/hide video description
+* Thumbnail Size - Select video thumbnail quality
+
+**Query Settings:**
+* Channel ID - Your YouTube channel ID
+* Playlist ID - YouTube playlist ID
+* Video Count - Number of videos to fetch
+* Cache Duration - How long to cache the feed
+
+**Style Settings:**
+* Title Color - Customize title text color
+* Description Color - Set description text color
+* Background Color - Change item background
+* Padding & Margin - Adjust spacing
+* Border - Customize border style
 
 == Installation ==
 

@@ -27,11 +27,40 @@ Advanced Videos Feed for Elementor is a powerful WordPress plugin that enhances 
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the Elementor editor to add video feed widgets to your pages
 
+## How to Use
+
+Watch our guide video to learn how to use the plugin:
+
+[Watch Tutorial](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+## Available Fields and Settings
+
+### General Settings
+- **Layout Type**: Choose between grid or list layout
+- **Columns**: Set number of columns for grid layout
+- **Items Per Page**: Control how many videos to display
+- **Title**: Show/hide video title
+- **Description**: Show/hide video description
+- **Thumbnail Size**: Select video thumbnail quality
+
+### Query Settings
+- **Channel ID**: Your YouTube channel ID
+- **Playlist ID**: YouTube playlist ID
+- **Video Count**: Number of videos to fetch
+- **Cache Duration**: How long to cache the feed
+
+### Style Settings
+- **Title Color**: Customize title text color
+- **Description Color**: Set description text color
+- **Background Color**: Change item background
+- **Padding & Margin**: Adjust spacing
+- **Border**: Customize border style
+
 ## Requirements
 
 - WordPress 5.0 or higher
 - Elementor 3.0 or higher
-- PHP 7.0 or higher
+- PHP 8.0 or higher
 
 ## Support
 
@@ -40,3 +69,31 @@ For support, please create an issue in the plugin's GitHub repository or contact
 ## License
 
 This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
+
+## Video Tutorials
+
+We provide detailed video tutorials to help you get started:
+
+- [How to Get YouTube API Key](https://www.youtube.com/watch?v=EPeDTRNKAVo)
+- [How to Find Your YouTube Channel ID](https://www.youtube.com/watch?v=3mrKjzrIiq4)
+- [How to Find YouTube Playlist ID](https://www.youtube.com/watch?v=Irz1mN_duAU)
+
+## Setup Guide
+
+### 1. Getting Your YouTube API Key
+- Go to Google Cloud Console
+- Create a new project or select existing
+- Enable YouTube Data API v3
+- Create credentials (API Key)
+- Watch our [detailed tutorial](https://www.youtube.com/watch?v=EPeDTRNKAVo)
+
+### 2. Finding Your Channel ID
+- Go to your YouTube channel page
+- Right-click and select "View Page Source"
+- Search for "channelId"
+- Or follow our [video guide](https://www.youtube.com/watch?v=3mrKjzrIiq4)
+
+### 3. Using Playlist Feed
+- Go to your YouTube playlist
+- Copy the ID from the URL (starts with "PL")
+- Check our [tutorial](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
