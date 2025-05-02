@@ -8,7 +8,7 @@ class Videos_Feed_Widget extends Widget_Base {
 
     public function get_name() { return "avffe_videos_feed"; }
 
-    public function get_title() { return "Advanced Videos Feed"; }
+    public function get_title() { return esc_html__("Advanced Videos Feed", "advance-videos-feed"); }
 
     public function get_icon() { return "eicon-youtube"; }
 
@@ -107,6 +107,19 @@ class Videos_Feed_Widget extends Widget_Base {
             [
                 'label' => __('Display Type', 'advance-videos-feed'),
                 'type' => Controls_Manager::SELECT,
+                'default' => 'embed',
+                'options' => [
+                    'embed' => __('Embed Videos', 'advance-videos-feed'),
+                    'thumbnail' => __('Thumbnails Only', 'advance-videos-feed'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'layout_type',
+            [
+                'label' => __('Layout Type', 'advance-videos-feed'),
+                'type' => Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
                     'grid' => __('Grid', 'advance-videos-feed'),
@@ -128,7 +141,7 @@ class Videos_Feed_Widget extends Widget_Base {
                     '4' => '4',
                 ],
                 'condition' => [
-                    'display_type' => 'grid',
+                    'layout_type' => 'grid',
                 ],
             ]
         );
@@ -162,7 +175,7 @@ class Videos_Feed_Widget extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .video-title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .avffe-title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -174,17 +187,18 @@ class Videos_Feed_Widget extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ff0000',
                 'selectors' => [
-                    '{{WRAPPER}} .video-title a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .avffe-title a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
+
         $this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} .video-title',
-			]
-		);      
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'content_typography',
+                'selector' => '{{WRAPPER}} .avffe-title',
+            ]
+        );      
 
         $this->add_control(
             'thumbnail_border_radius',
@@ -200,7 +214,7 @@ class Videos_Feed_Widget extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .video-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .avffe-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -221,7 +235,7 @@ class Videos_Feed_Widget extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .avffe-grid' => 'grid-gap: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .avffe-list .video-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .avffe-list .avffe-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -235,6 +249,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $source_type = $settings['source_type'];
         $max_results = $settings['video_count'];
         $display_type = $settings['display_type'];
+        $layout_type = $settings['layout_type'];
         $columns = $settings['columns'];
 
         if (empty($api_key)) {
@@ -274,8 +289,8 @@ class Videos_Feed_Widget extends Widget_Base {
             return;
         }
 
-        $grid_class = $display_type === 'grid' ? 'avffe-grid avffe-columns-' . $columns : 'avffe-list';
-        echo "<div class='advance-videos-feed {$grid_class}'>";
+        $grid_class = $layout_type === 'grid' ? 'avffe-grid avffe-columns-' . $columns : 'avffe-list';
+        echo "<div class='avffe-feed {$grid_class}'>";
 
         foreach ($data->items as $item) {
             if ($source_type === 'channel' && isset($item->id->videoId)) {
@@ -287,25 +302,55 @@ class Videos_Feed_Widget extends Widget_Base {
             }
 
             $title = esc_html($item->snippet->title);
-            $thumbnail = $item->snippet->thumbnails->medium->url;
+            // Use maxres thumbnail if available, fallback to high, then medium
+            $thumbnail = isset($item->snippet->thumbnails->maxres->url) 
+                ? $item->snippet->thumbnails->maxres->url 
+                : (isset($item->snippet->thumbnails->high->url) 
+                    ? $item->snippet->thumbnails->high->url 
+                    : $item->snippet->thumbnails->medium->url);
             $description = wp_trim_words(esc_html($item->snippet->description), 15, '...');
             $published_at = date('M j, Y', strtotime($item->snippet->publishedAt));
             
-            echo "<div class='video-item'>";
-            echo "<div class='video-thumbnail'>";
-            echo "<a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>";
-            echo "<img src='{$thumbnail}' alt='{$title}' loading='lazy'>";
-            echo "<div class='play-button'></div>";
-            echo "</a>";
+            echo "<div class='avffe-item'>";
+            
+            if ($display_type === 'embed') {
+                echo "<div class='avffe-embed'>";
+                echo "<iframe 
+                    width='100%' 
+                    height='315' 
+                    src='https://www.youtube.com/embed/{$video_id}' 
+                    title='{$title}'
+                    frameborder='0' 
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' 
+                    allowfullscreen>
+                </iframe>";
+                echo "</div>";
+            } else {
+                echo "<div class='avffe-thumbnail'>";
+                echo "<a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>";
+                echo "<img src='{$thumbnail}' alt='{$title}' loading='lazy'>";
+                echo "<div class='avffe-play-button'></div>";
+                echo "</a>";
+                echo "</div>";
+            }
+
+            echo "<div class='avffe-content'>";
+            echo "<h3 class='avffe-title'>";
+            echo "<a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>{$title}</a>";
+            echo "</h3>";
+            
+            if ($layout_type === 'list' || $columns === '1') {
+                echo "<p class='avffe-description'>{$description}</p>";
+            }
+            
+            echo "<div class='avffe-meta'>";
+            echo "<span class='avffe-date'>{$published_at}</span>";
             echo "</div>";
-            echo "<div class='video-content'>";
-            echo "<h3 class='video-title'><a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>{$title}</a></h3>";
-            echo "<p class='video-description'>{$description}</p>";
-            echo "<span class='video-date'>{$published_at}</span>";
-            echo "</div>";
-            echo "</div>";
+            
+            echo "</div>"; // .avffe-content
+            echo "</div>"; // .avffe-item
         }
 
-        echo "</div>";
+        echo "</div>"; // .avffe-feed
     }
 }
