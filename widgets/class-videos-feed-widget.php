@@ -191,14 +191,39 @@ class Videos_Feed_Widget extends Widget_Base {
                 ],
             ]
         );
-
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'content_typography',
+                'name' => 'title_typography',
+                'label' => __('Title Typography', 'advance-videos-feed'),
                 'selector' => '{{WRAPPER}} .avffe-title',
             ]
         );      
+
+
+        // Add Date Color Control
+        $this->add_control(
+            'date_color',
+            [
+                'label' => __('Date Color', 'advance-videos-feed'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#777777',
+                'selectors' => [
+                    '{{WRAPPER}} .avffe-date' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Add Date Typography Control
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'date_typography',
+                'label' => __('Date Typography', 'advance-videos-feed'),
+                'selector' => '{{WRAPPER}} .avffe-date',
+            ]
+        );
+
 
         $this->add_control(
             'thumbnail_border_radius',
@@ -237,6 +262,77 @@ class Videos_Feed_Widget extends Widget_Base {
                     '{{WRAPPER}} .avffe-grid' => 'grid-gap: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .avffe-list .avffe-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        // Add Item Box Style Controls
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'item_border',
+                'label' => __('Border', 'advance-videos-feed'),
+                'selector' => '{{WRAPPER}} .avffe-item',
+            ]
+        );
+
+        $this->add_control(
+            'item_border_radius',
+            [
+                'label' => __('Border Radius', 'advance-videos-feed'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 8,
+                    'right' => 8,
+                    'bottom' => 8,
+                    'left' => 8,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .avffe-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_padding',
+            [
+                'label' => __('Padding', 'advance-videos-feed'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .avffe-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'item_box_shadow',
+                'label' => __('Box Shadow', 'advance-videos-feed'),
+                'selector' => '{{WRAPPER}} .avffe-item',
+                'fields_options' => [
+                    'box_shadow_type' => [
+                        'default' => 'yes'
+                    ],
+                    'box_shadow' => [
+                        'default' => [
+                            'horizontal' => 0,
+                            'vertical' => 2,
+                            'blur' => 10,
+                            'spread' => 0,
+                            'color' => 'rgba(0,0,0,0.1)'
+                        ]
+                    ]
+                ]
             ]
         );
 
