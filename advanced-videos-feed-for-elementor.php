@@ -7,7 +7,7 @@
  * Author URI: https://facebook.com/hmbashar
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: advance-videos-feed
+ * Text Domain: advanced-videos-feed-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.0
  * Requires PHP: 8.0
@@ -16,7 +16,7 @@
  * Requires Plugins: elementor
  *
  * @author Md Abul Bashar
- * @package Advance-Videos-Feed
+ * @package advanced-videos-feed-for-elementor
  * @since 1.0.0
  */
 
@@ -45,7 +45,7 @@ function avffe_check_elementor_installed() {
 function avffe_elementor_missing_notice() {
     if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
     $message = sprintf(
-        __( '"%1$s" requires "%2$s" to be installed and activated.', 'advance-videos-feed' ),
+        __( '"%1$s" requires "%2$s" to be installed and activated.', 'advanced-videos-feed-for-elementor' ),
         '<strong>Advanced Videos Feed for Elementor</strong>',
         '<strong>Elementor</strong>'
     );
@@ -70,7 +70,7 @@ add_action( 'plugins_loaded', 'avffe_init' );
 
 function avffe_textdomain() {
      // Load plugin text domain
-     load_plugin_textdomain( 'advance-videos-feed', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+     load_plugin_textdomain( 'advanced-videos-feed-for-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'avffe_textdomain' );
 
@@ -87,7 +87,7 @@ function avffe_register_widget( $widgets_manager ) {
  */
 function avffe_register_styles() {
     wp_register_style(
-        'advance-videos-feed',
+        'advanced-videos-feed-for-elementor',
         AVFFE_URL . 'assets/css/videos-feed.css',
         [],
         AVFFE_VERSION

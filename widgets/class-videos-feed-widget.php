@@ -16,7 +16,7 @@ class Videos_Feed_Widget extends Widget_Base {
     public function get_keywords() { return ["youtube", "feed", "videos"]; }
 
     public function get_style_depends() {
-        return ['advance-videos-feed'];
+        return ['advanced-videos-feed-for-elementor'];
     }
 
     protected function register_controls() {
@@ -24,7 +24,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('YouTube Settings', 'advance-videos-feed'),
+                'label' => __('YouTube Settings', 'advanced-videos-feed-for-elementor'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -32,7 +32,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'api_key',
             [
-                'label' => __('YouTube API Key', 'advance-videos-feed'),
+                'label' => __('YouTube API Key', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => 'YOUR API KEY',
                 'description' => __('How to get YouTube API Key:<br>
@@ -42,19 +42,19 @@ class Videos_Feed_Widget extends Widget_Base {
                 4. Create credentials (API Key)<br>
                 5. Copy and paste your API key here<br>
                 <br>
-                Watch Step by Step Tutorial: <a href="https://www.youtube.com/watch?v=EPeDTRNKAVo" target="_blank">How to Get YouTube API Key</a>', 'advance-videos-feed'),
+                Watch Step by Step Tutorial: <a href="https://www.youtube.com/watch?v=EPeDTRNKAVo" target="_blank">How to Get YouTube API Key</a>', 'advanced-videos-feed-for-elementor'),
             ]
         );
 
         $this->add_control(
             'source_type',
             [
-                'label' => __('Source Type', 'advance-videos-feed'),
+                'label' => __('Source Type', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'channel',
                 'options' => [
-                    'channel' => __('Channel', 'advance-videos-feed'),
-                    'playlist' => __('Playlist', 'advance-videos-feed'),
+                    'channel' => __('Channel', 'advanced-videos-feed-for-elementor'),
+                    'playlist' => __('Playlist', 'advanced-videos-feed-for-elementor'),
                 ],
             ]
         );
@@ -62,7 +62,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'channel_id',
             [
-                'label' => __('YouTube Channel ID', 'advance-videos-feed'),
+                'label' => __('YouTube Channel ID', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::TEXT,
                 'default' => '',
                 'placeholder' => 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
@@ -77,7 +77,7 @@ class Videos_Feed_Widget extends Widget_Base {
                 2. Look at the URL: youtube.com/channel/<strong>YOUR_CHANNEL_ID</strong><br>
                 3. If you see "c/" or "user/" instead, you need to find the channel ID using the first method<br>
                 <br>
-                Watch Tutorial: <a href="https://www.youtube.com/watch?v=3mrKjzrIiq4" target="_blank">How to Find YouTube Channel ID</a>', 'advance-videos-feed'),
+                Watch Tutorial: <a href="https://www.youtube.com/watch?v=3mrKjzrIiq4" target="_blank">How to Find YouTube Channel ID</a>', 'advanced-videos-feed-for-elementor'),
                 'condition' => [
                     'source_type' => 'channel',
                 ],
@@ -87,7 +87,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'playlist_id',
             [
-                'label' => __('YouTube Playlist ID', 'advance-videos-feed'),
+                'label' => __('YouTube Playlist ID', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::TEXT,
                 'default' => '',
                 'placeholder' => 'PLxxxxxxxxxxxxxxx',
@@ -96,7 +96,7 @@ class Videos_Feed_Widget extends Widget_Base {
                 2. Look at the URL: youtube.com/playlist?list=<strong>YOUR_PLAYLIST_ID</strong><br>
                 3. Copy the ID that starts with "PL"<br>
                 <br>
-                Watch Tutorial: <a href="https://www.youtube.com/watch?v=Irz1mN_duAU" target="_blank">How to Find YouTube Playlist ID</a>', 'advance-videos-feed'),
+                Watch Tutorial: <a href="https://www.youtube.com/watch?v=Irz1mN_duAU" target="_blank">How to Find YouTube Playlist ID</a>', 'advanced-videos-feed-for-elementor'),
                 'condition' => [
                     'source_type' => 'playlist',
                 ],
@@ -106,12 +106,12 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'display_type',
             [
-                'label' => __('Display Type', 'advance-videos-feed'),
+                'label' => __('Display Type', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'embed',
                 'options' => [
-                    'embed' => __('Embed Videos', 'advance-videos-feed'),
-                    'thumbnail' => __('Thumbnails Only', 'advance-videos-feed'),
+                    'embed' => __('Embed Videos', 'advanced-videos-feed-for-elementor'),
+                    'thumbnail' => __('Thumbnails Only', 'advanced-videos-feed-for-elementor'),
                 ],
             ]
         );
@@ -119,12 +119,12 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'layout_type',
             [
-                'label' => __('Layout Type', 'advance-videos-feed'),
+                'label' => __('Layout Type', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
-                    'grid' => __('Grid', 'advance-videos-feed'),
-                    'list' => __('List', 'advance-videos-feed'),
+                    'grid' => __('Grid', 'advanced-videos-feed-for-elementor'),
+                    'list' => __('List', 'advanced-videos-feed-for-elementor'),
                 ],
             ]
         );
@@ -132,7 +132,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __('Columns', 'advance-videos-feed'),
+                'label' => __('Columns', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::SELECT,
                 'default' => '3',
                 'options' => [
@@ -150,7 +150,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'video_count',
             [
-                'label' => __('Number of Videos', 'advance-videos-feed'),
+                'label' => __('Number of Videos', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::NUMBER,
                 'default' => 6,
                 'min' => 1,
@@ -164,7 +164,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->start_controls_section(
             'style_section',
             [
-                'label' => __('Style Settings', 'advance-videos-feed'),
+                'label' => __('Style Settings', 'advanced-videos-feed-for-elementor'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -172,7 +172,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => __('Title Color', 'advance-videos-feed'),
+                'label' => __('Title Color', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
@@ -184,7 +184,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'title_hover_color',
             [
-                'label' => __('Title Hover Color', 'advance-videos-feed'),
+                'label' => __('Title Hover Color', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ff0000',
                 'selectors' => [
@@ -196,7 +196,7 @@ class Videos_Feed_Widget extends Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => __('Title Typography', 'advance-videos-feed'),
+                'label' => __('Title Typography', 'advanced-videos-feed-for-elementor'),
                 'selector' => '{{WRAPPER}} .avffe-title',
             ]
         );      
@@ -206,7 +206,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'date_color',
             [
-                'label' => __('Date Color', 'advance-videos-feed'),
+                'label' => __('Date Color', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#777777',
                 'selectors' => [
@@ -220,7 +220,7 @@ class Videos_Feed_Widget extends Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'date_typography',
-                'label' => __('Date Typography', 'advance-videos-feed'),
+                'label' => __('Date Typography', 'advanced-videos-feed-for-elementor'),
                 'selector' => '{{WRAPPER}} .avffe-date',
             ]
         );
@@ -229,7 +229,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'thumbnail_border_radius',
             [
-                'label' => __('Thumbnail Border Radius', 'advance-videos-feed'),
+                'label' => __('Thumbnail Border Radius', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default' => [
@@ -248,7 +248,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'thumbnail_spacing',
             [
-                'label' => __('Thumbnail Spacing', 'advance-videos-feed'),
+                'label' => __('Thumbnail Spacing', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 20,
@@ -271,7 +271,7 @@ class Videos_Feed_Widget extends Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'item_border',
-                'label' => __('Border', 'advance-videos-feed'),
+                'label' => __('Border', 'advanced-videos-feed-for-elementor'),
                 'selector' => '{{WRAPPER}} .avffe-item',
             ]
         );
@@ -279,7 +279,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_control(
             'item_border_radius',
             [
-                'label' => __('Border Radius', 'advance-videos-feed'),
+                'label' => __('Border Radius', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default' => [
@@ -298,7 +298,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->add_responsive_control(
             'item_padding',
             [
-                'label' => __('Padding', 'advance-videos-feed'),
+                'label' => __('Padding', 'advanced-videos-feed-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'default' => [
@@ -318,7 +318,7 @@ class Videos_Feed_Widget extends Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'item_box_shadow',
-                'label' => __('Box Shadow', 'advance-videos-feed'),
+                'label' => __('Box Shadow', 'advanced-videos-feed-for-elementor'),
                 'selector' => '{{WRAPPER}} .avffe-item',
                 'fields_options' => [
                     'box_shadow_type' => [
@@ -350,7 +350,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $columns = $settings['columns'];
 
         if (empty($api_key)) {
-            echo '<p class="avffe-error">' . __('Please enter your YouTube API Key in the widget settings.', 'advance-videos-feed') . '</p>';
+            echo '<p class="avffe-error">' . __('Please enter your YouTube API Key in the widget settings.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
@@ -358,14 +358,14 @@ class Videos_Feed_Widget extends Widget_Base {
         if ($source_type === 'channel') {
             $channel_id = $settings['channel_id'];
             if (empty($channel_id)) {
-                echo '<p class="avffe-error">' . __('Please enter a Channel ID.', 'advance-videos-feed') . '</p>';
+                echo '<p class="avffe-error">' . __('Please enter a Channel ID.', 'advanced-videos-feed-for-elementor') . '</p>';
                 return;
             }
             $api_url = "https://www.googleapis.com/youtube/v3/search?key={$api_key}&channelId={$channel_id}&part=snippet,id&order=date&maxResults={$max_results}&type=video";
         } else {
             $playlist_id = $settings['playlist_id'];
             if (empty($playlist_id)) {
-                echo '<p class="avffe-error">' . __('Please enter a Playlist ID.', 'advance-videos-feed') . '</p>';
+                echo '<p class="avffe-error">' . __('Please enter a Playlist ID.', 'advanced-videos-feed-for-elementor') . '</p>';
                 return;
             }
             $api_url = "https://www.googleapis.com/youtube/v3/playlistItems?key={$api_key}&playlistId={$playlist_id}&part=snippet&maxResults={$max_results}";
@@ -374,7 +374,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $response = wp_remote_get($api_url);
 
         if (is_wp_error($response)) {
-            echo '<p class="avffe-error">' . __('Error fetching videos. Please check your API key and settings.', 'advance-videos-feed') . '</p>';
+            echo '<p class="avffe-error">' . __('Error fetching videos. Please check your API key and settings.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
@@ -382,7 +382,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $data = json_decode($body);
 
         if (empty($data->items)) {
-            echo '<p class="avffe-error">' . __('No videos found.', 'advance-videos-feed') . '</p>';
+            echo '<p class="avffe-error">' . __('No videos found.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
