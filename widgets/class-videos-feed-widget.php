@@ -8,7 +8,7 @@ class Videos_Feed_Widget extends Widget_Base {
 
     public function get_name() { return "avffe_videos_feed"; }
 
-    public function get_title() { return esc_html__("Advanced Videos Feed", "advance-videos-feed"); }
+    public function get_title() { return esc_html__("Advanced Videos Feed", "advanced-videos-feed-for-elementor"); }
 
     public function get_icon() { return "eicon-youtube"; }
 

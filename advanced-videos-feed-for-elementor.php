@@ -68,11 +68,6 @@ function avffe_init() {
 }
 add_action( 'plugins_loaded', 'avffe_init' );
 
-function avffe_textdomain() {
-     // Load plugin text domain
-     load_plugin_textdomain( 'advanced-videos-feed-for-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'avffe_textdomain' );
 
 /**
  * Register Elementor Widget
