@@ -340,7 +340,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $this->end_controls_section();
     }
 
-    protected function render() {
+ protected function render() {
         $settings = $this->get_settings_for_display();
         $api_key = $settings['api_key'];
         $source_type = $settings['source_type'];
@@ -350,7 +350,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $columns = $settings['columns'];
 
         if (empty($api_key)) {
-            echo '<p class="avffe-error">' . __('Please enter your YouTube API Key in the widget settings.', 'advanced-videos-feed-for-elementor') . '</p>';
+            echo '<p class="avffe-error">' . esc_html__('Please enter your YouTube API Key in the widget settings.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
@@ -358,14 +358,14 @@ class Videos_Feed_Widget extends Widget_Base {
         if ($source_type === 'channel') {
             $channel_id = $settings['channel_id'];
             if (empty($channel_id)) {
-                echo '<p class="avffe-error">' . __('Please enter a Channel ID.', 'advanced-videos-feed-for-elementor') . '</p>';
+                echo '<p class="avffe-error">' . esc_html__('Please enter a Channel ID.', 'advanced-videos-feed-for-elementor') . '</p>';
                 return;
             }
             $api_url = "https://www.googleapis.com/youtube/v3/search?key={$api_key}&channelId={$channel_id}&part=snippet,id&order=date&maxResults={$max_results}&type=video";
         } else {
             $playlist_id = $settings['playlist_id'];
             if (empty($playlist_id)) {
-                echo '<p class="avffe-error">' . __('Please enter a Playlist ID.', 'advanced-videos-feed-for-elementor') . '</p>';
+                echo '<p class="avffe-error">' . esc_html__('Please enter a Playlist ID.', 'advanced-videos-feed-for-elementor') . '</p>';
                 return;
             }
             $api_url = "https://www.googleapis.com/youtube/v3/playlistItems?key={$api_key}&playlistId={$playlist_id}&part=snippet&maxResults={$max_results}";
@@ -374,7 +374,7 @@ class Videos_Feed_Widget extends Widget_Base {
         $response = wp_remote_get($api_url);
 
         if (is_wp_error($response)) {
-            echo '<p class="avffe-error">' . __('Error fetching videos. Please check your API key and settings.', 'advanced-videos-feed-for-elementor') . '</p>';
+            echo '<p class="avffe-error">' . esc_html__('Error fetching videos. Please check your API key and settings.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
@@ -382,12 +382,12 @@ class Videos_Feed_Widget extends Widget_Base {
         $data = json_decode($body);
 
         if (empty($data->items)) {
-            echo '<p class="avffe-error">' . __('No videos found.', 'advanced-videos-feed-for-elementor') . '</p>';
+            echo '<p class="avffe-error">' . esc_html__('No videos found.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
 
-        $grid_class = $layout_type === 'grid' ? 'avffe-grid avffe-columns-' . $columns : 'avffe-list';
-        echo "<div class='avffe-feed {$grid_class}'>";
+        $grid_class = $layout_type === 'grid' ? 'avffe-grid avffe-columns-' . esc_attr($columns) : 'avffe-list';
+        echo "<div class='avffe-feed " . esc_attr($grid_class) . "'>";
 
         foreach ($data->items as $item) {
             if ($source_type === 'channel' && isset($item->id->videoId)) {
@@ -399,33 +399,33 @@ class Videos_Feed_Widget extends Widget_Base {
             }
 
             $title = esc_html($item->snippet->title);
-            // Use maxres thumbnail if available, fallback to high, then medium
-            $thumbnail = isset($item->snippet->thumbnails->maxres->url) 
-                ? $item->snippet->thumbnails->maxres->url 
-                : (isset($item->snippet->thumbnails->high->url) 
-                    ? $item->snippet->thumbnails->high->url 
-                    : $item->snippet->thumbnails->medium->url);
-            $description = wp_trim_words(esc_html($item->snippet->description), 15, '...');
-            $published_at = date('M j, Y', strtotime($item->snippet->publishedAt));
-            
+            $thumbnail = isset($item->snippet->thumbnails->maxres->url)
+                ? esc_url($item->snippet->thumbnails->maxres->url)
+                : (isset($item->snippet->thumbnails->high->url)
+                    ? esc_url($item->snippet->thumbnails->high->url)
+                    : esc_url($item->snippet->thumbnails->medium->url));
+            $description = esc_html(wp_trim_words($item->snippet->description, 15, '...'));
+            $published_at = gmdate('M j, Y', strtotime($item->snippet->publishedAt));
+
             echo "<div class='avffe-item'>";
-            
+
             if ($display_type === 'embed') {
                 echo "<div class='avffe-embed'>";
-                echo "<iframe 
-                    width='100%' 
-                    height='315' 
-                    src='https://www.youtube.com/embed/{$video_id}' 
-                    title='{$title}'
-                    frameborder='0' 
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' 
+                echo "<iframe
+                    width='100%'
+                    height='315'
+                    src='https://www.youtube.com/embed/" . esc_attr($video_id) . "'
+                    title='" . esc_attr($title) . "'
+                    frameborder='0'
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     allowfullscreen>
                 </iframe>";
                 echo "</div>";
             } else {
                 echo "<div class='avffe-thumbnail'>";
-                echo "<a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>";
-                echo "<img src='{$thumbnail}' alt='{$title}' loading='lazy'>";
+                echo "<a href='https://www.youtube.com/watch?v=" . esc_attr($video_id) . "' target='_blank' rel='noopener'>";
+				// phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage -- External YouTube thumbnail; wp_get_attachment_image() not applicable.
+                echo "<img src='" . esc_url($thumbnail) . "' alt='" . esc_attr($title) . "' loading='lazy'>";
                 echo "<div class='avffe-play-button'></div>";
                 echo "</a>";
                 echo "</div>";
@@ -433,21 +433,20 @@ class Videos_Feed_Widget extends Widget_Base {
 
             echo "<div class='avffe-content'>";
             echo "<h3 class='avffe-title'>";
-            echo "<a href='https://www.youtube.com/watch?v={$video_id}' target='_blank' rel='noopener'>{$title}</a>";
+            echo "<a href='https://www.youtube.com/watch?v=" . esc_attr($video_id) . "' target='_blank' rel='noopener'>" . esc_html($title) . "</a>";
             echo "</h3>";
-            
+
             if ($layout_type === 'list' || $columns === '1') {
-                echo "<p class='avffe-description'>{$description}</p>";
+                echo "<p class='avffe-description'>" . wp_kses_post($description) . "</p>";
             }
-            
+
             echo "<div class='avffe-meta'>";
-            echo "<span class='avffe-date'>{$published_at}</span>";
+            echo "<span class='avffe-date'>" . wp_kses_post($published_at) . "</span>";
             echo "</div>";
-            
-            echo "</div>"; // .avffe-content
-            echo "</div>"; // .avffe-item
+            echo "</div>";
+            echo "</div>";
         }
 
-        echo "</div>"; // .avffe-feed
+        echo "</div>";
     }
 }

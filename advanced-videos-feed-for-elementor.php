@@ -43,14 +43,19 @@ function avffe_check_elementor_installed() {
  * Admin notice for missing Elementor
  */
 function avffe_elementor_missing_notice() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe use on plugin activation admin notice only.
     if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
+    
     $message = sprintf(
+		// translators: 1: Plugin name, 2: Required plugin name
         __( '"%1$s" requires "%2$s" to be installed and activated.', 'advanced-videos-feed-for-elementor' ),
         '<strong>Advanced Videos Feed for Elementor</strong>',
         '<strong>Elementor</strong>'
     );
-    printf( '<div class="notice notice-error"><p>%1$s</p></div>', $message );
+
+    printf( '<div class="notice notice-error"><p>%1$s</p></div>', wp_kses_post($message) );
 }
+
 
 /**
  * Initialize the plugin
