@@ -353,7 +353,7 @@ class Videos_Feed_Widget extends Widget_Base {
             echo '<p class="avffe-error">' . esc_html__('Please enter your YouTube API Key in the widget settings.', 'advanced-videos-feed-for-elementor') . '</p>';
             return;
         }
-
+        // The YouTube API endpoint will be set based on source type (channel or playlist)
         $api_url = '';
         if ($source_type === 'channel') {
             $channel_id = $settings['channel_id'];

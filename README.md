@@ -1,25 +1,33 @@
 # Advanced Videos Feed for Elementor
 
-Display beautiful video feeds from various sources using Elementor widgets.
+Display beautiful video feeds from various sources using Elementor widgets. This plugin allows you to showcase video content from YouTube in your Elementor-powered WordPress website.
 
 ## Description
 
-Advanced Videos Feed for Elementor is a powerful WordPress plugin that enhances your Elementor page builder with advanced video feed capabilities. Create engaging video galleries and feeds from YouTube directly in your Elementor-powered website.
+Advanced Videos Feed for Elementor is a powerful WordPress plugin that enables you to create engaging video galleries, feeds, and displays with ease. Perfect for content creators, bloggers, and website owners who want to showcase their video content professionally.
 
-## Current Features
+## Features
 
-- **Easy Integration**: Seamlessly integrates with Elementor page builder
-- **YouTube Support**: Display videos from YouTube
-- **Customizable Layouts**: Choose from grid or list layouts
-- **Responsive Design**: Looks perfect on all devices
-- **Video Thumbnails**: Display custom video thumbnails
-- **Layout Options**: Grid and list layout support
+- 🎯 Easy integration with Elementor
+- 📺 YouTube video platform support
+- 🎨 Customizable video layouts
+- 📱 Responsive design
+- 🖼️ Video thumbnail display options
+- 📊 Grid and list layout options
 
-## Upcoming Features
+## External Services
 
-- Support for multiple video platforms (Vimeo and others)
-- Custom play button styles
-- Lazy loading support
+This plugin uses the YouTube Data API v3 to fetch and display videos:
+
+- **Service Provider**: Google's YouTube Data API v3
+- **Purpose**: To fetch video data from YouTube channels and playlists
+- **Data Transmission**: 
+  - The plugin sends requests to YouTube's API with your API key
+  - For channel feeds: Requests include channel ID and maximum results count
+  - For playlist feeds: Requests include playlist ID and maximum results count
+- **Privacy & Terms**:
+  - [YouTube API Services Terms of Service](https://developers.google.com/youtube/terms/api-services-terms-of-service)
+  - [Google Privacy Policy](https://policies.google.com/privacy)
 
 ## Installation
 
@@ -27,70 +35,68 @@ Advanced Videos Feed for Elementor is a powerful WordPress plugin that enhances 
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the Elementor editor to add video feed widgets to your pages
 
-## Available Fields and Settings
+## Getting Started
 
-### General Settings
-- **Layout Type**: Choose between grid or list layout
-- **Columns**: Set number of columns for grid layout
-- **Items Per Page**: Control how many videos to display
-- **Title**: Show/hide video title
-- **Description**: Show/hide video description
-- **Thumbnail Size**: Select video thumbnail quality
-
-### Query Settings
-- **Channel ID**: Your YouTube channel ID
-- **Playlist ID**: YouTube playlist ID
-- **Video Count**: Number of videos to fetch
-- **Cache Duration**: How long to cache the feed
-
-### Style Settings
-- **Title Color**: Customize title text color
-- **Description Color**: Set description text color
-- **Background Color**: Change item background
-- **Padding & Margin**: Adjust spacing
-- **Border**: Customize border style
-
-
-# How to Use
-
-## Video Tutorials
-
-We provide detailed video tutorials to help you get started:
-
-- [How to Get YouTube API Key](https://www.youtube.com/watch?v=EPeDTRNKAVo)
-- [How to Find Your YouTube Channel ID](https://www.youtube.com/watch?v=3mrKjzrIiq4)
-- [How to Find YouTube Playlist ID](https://www.youtube.com/watch?v=Irz1mN_duAU)
-
-## Setup Guide
-
-### 1. Getting Your YouTube API Key
+### 1. Get your YouTube API Key
 - Go to Google Cloud Console
 - Create a new project or select existing
 - Enable YouTube Data API v3
 - Create credentials (API Key)
-- Watch our [detailed tutorial](https://www.youtube.com/watch?v=EPeDTRNKAVo)
+- [Watch the tutorial video](https://www.youtube.com/watch?v=EPeDTRNKAVo) for detailed steps
 
-### 2. Finding Your Channel ID
+### 2. Find your Channel ID
 - Go to your YouTube channel page
 - Right-click and select "View Page Source"
 - Search for "channelId"
-- Or follow our [video guide](https://www.youtube.com/watch?v=3mrKjzrIiq4)
+- [Watch the tutorial video](https://www.youtube.com/watch?v=3mrKjzrIiq4) for guidance
 
-### 3. Using Playlist Feed
+### 3. For Playlist Feed
 - Go to your YouTube playlist
 - Copy the ID from the URL (starts with "PL")
-- Check our [tutorial](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
+- [Watch the tutorial video](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
+
+## Available Settings
+
+### General Settings
+- Layout Type (grid/list)
+- Columns for grid layout
+- Items Per Page
+- Title visibility
+- Description visibility
+- Thumbnail Size
+
+### Query Settings
+- Channel ID
+- Playlist ID
+- Video Count
+- Cache Duration
+
+### Style Settings
+- Title Color
+- Description Color
+- Background Color
+- Padding & Margin
+- Border Style
 
 ## Requirements
 
 - WordPress 5.0 or higher
-- Elementor 3.0 or higher
 - PHP 8.0 or higher
+- Elementor Plugin installed and activated
 
 ## Support
 
-For support, please create an issue in the plugin's GitHub repository or contact through WordPress.org support forums.
+For support, please use the [WordPress.org plugin forum](https://wordpress.org/support/plugin/advanced-videos-feed-for-elementor/).
 
 ## License
 
-This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
+GPLv2 or later. See [License URI](https://www.gnu.org/licenses/gpl-2.0.html) for details.
+
+## Changelog
+
+### 1.0.0
+- Initial release
+
+## Contributing
+
+Contributions are welcome! Feel free to submit pull requests or create issues for bugs and feature requests.
