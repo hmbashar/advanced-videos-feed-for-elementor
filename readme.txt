@@ -17,20 +17,6 @@ Advanced Videos Feed for Elementor allows you to showcase video content from var
 [View Demo](https://lonelytime.s3-tastewp.com/advance-video-feed-for-elementor/)
 
 
-== External Services ==
-
-This plugin uses the YouTube Data API v3 to fetch and display videos. Here's what you need to know:
-
-* Service Provider: Google's YouTube Data API v3
-* Purpose: To fetch video data from YouTube channels and playlists
-* Data Transmission: 
-  - The plugin sends requests to YouTube's API with your API key
-  - For channel feeds: Requests include channel ID and maximum results count
-  - For playlist feeds: Requests include playlist ID and maximum results count
-* Privacy & Terms:
-  - YouTube API Services Terms of Service: https://developers.google.com/youtube/terms/api-services-terms-of-service
-  - Google Privacy Policy: https://policies.google.com/privacy
-
 = Current Features =
 * Easy integration with Elementor
 * YouTube video platform support
@@ -69,7 +55,7 @@ This plugin uses the YouTube Data API v3 to fetch and display videos. Here's wha
    * Go to your YouTube playlist
    * Copy the ID from the URL (starts with "PL")
    * Watch the [tutorial video](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
-[youtube https://www.youtube.com/watch?v=YOUR_VIDEO_ID]
+
 
 = Available Fields and Settings =
 
@@ -93,6 +79,22 @@ This plugin uses the YouTube Data API v3 to fetch and display videos. Here's wha
 * Background Color - Change item background
 * Padding & Margin - Adjust spacing
 * Border - Customize border style
+
+
+== External Services ==
+
+This plugin uses the YouTube Data API v3 to fetch and display videos. Here's what you need to know:
+
+* Service Provider: Google's YouTube Data API v3
+* Purpose: To fetch video data from YouTube channels and playlists
+* Data Transmission: 
+  - The plugin sends requests to YouTube's API with your API key
+  - For channel feeds: Requests include channel ID and maximum results count
+  - For playlist feeds: Requests include playlist ID and maximum results count
+* Privacy & Terms:
+  - YouTube API Services Terms of Service: https://developers.google.com/youtube/terms/api-services-terms-of-service
+  - Google Privacy Policy: https://policies.google.com/privacy
+
 
 == Installation ==
 
