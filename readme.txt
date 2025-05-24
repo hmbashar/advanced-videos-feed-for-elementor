@@ -55,7 +55,7 @@ Advanced Videos Feed for Elementor allows you to showcase video content from var
    * Go to your YouTube playlist
    * Copy the ID from the URL (starts with "PL")
    * Watch the [tutorial video](https://www.youtube.com/watch?v=Irz1mN_duAU) for help
-[youtube https://www.youtube.com/watch?v=YOUR_VIDEO_ID]
+
 
 = Available Fields and Settings =
 
