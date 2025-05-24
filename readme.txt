@@ -14,6 +14,9 @@ Display beautiful video feeds from various sources using Elementor widgets.
 
 Advanced Videos Feed for Elementor allows you to showcase video content from various platforms in your Elementor-powered WordPress website. Create engaging video galleries, feeds, and displays with ease.
 
+[View Demo](https://lonelytime.s3-tastewp.com/advance-video-feed-for-elementor/)
+
+
 == External Services ==
 
 This plugin uses the YouTube Data API v3 to fetch and display videos. Here's what you need to know:

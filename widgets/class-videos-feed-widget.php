@@ -12,7 +12,7 @@ class Videos_Feed_Widget extends Widget_Base {
 
     public function get_icon() { return "eicon-youtube"; }
 
-    public function get_categories() { return ["general"]; }
+    public function get_categories() { return ["basic"]; }
     public function get_keywords() { return ["youtube", "feed", "videos"]; }
 
     public function get_style_depends() {

@@ -6,6 +6,9 @@ Display beautiful video feeds from various sources using Elementor widgets. This
 
 Advanced Videos Feed for Elementor is a powerful WordPress plugin that enables you to create engaging video galleries, feeds, and displays with ease. Perfect for content creators, bloggers, and website owners who want to showcase their video content professionally.
 
+[View Demo](https://lonelytime.s3-tastewp.com/advance-video-feed-for-elementor/)
+
+
 ## Features
 
 - 🎯 Easy integration with Elementor
